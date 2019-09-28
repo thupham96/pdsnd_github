@@ -18,7 +18,7 @@ def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
-        city = input('Would you like to see data for Chicago, New York City, or Washington?\n')
+        city = input('Would you like to see results for Chicago, New York City, or Washington?\n')
         if city.lower() not in ("chicago","new york city","washington"):
             print("Invalid input. Please try again.")
             continue
@@ -57,7 +57,7 @@ def load_data(city, month, day):
         df - Pandas DataFrame containing city data filtered by month and day
     """
     filename = CITY_DATA[city.lower()]
-    
+
     if day == 'all':
         df = pd.read_csv(filename)
         if month != 'all':
@@ -77,7 +77,7 @@ def time_stats(df):
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
-    
+
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     # TO DO: display the most common month
     df['month'] = df['Start Time'].dt.month
@@ -88,7 +88,7 @@ def time_stats(df):
     df['day_of_week'] = df['Start Time'].dt.dayofweek
     most_common_day = df['day_of_week'].mode()[0]
     print("Most common day of week: {}".format(most_common_day))
-    
+
     # TO DO: display the most common start hour
     df['hour'] = df['Start Time'].dt.hour
     most_common_hour = df['hour'].mode()[0]
@@ -103,7 +103,7 @@ def station_stats(df):
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
-    
+
     # TO DO: display most commonly used start station
     popular_start_station = df['Start Station'].mode()[0]
     print("Most commonly used start station: {}".format(popular_start_station))
@@ -141,7 +141,7 @@ def user_stats(city, df):
 
     print('\nCalculating User Stats...\n')
     start_time = time.time()
-    
+
     # TO DO: Display counts of user types
     user_type_count = df['User Type'].value_counts()
     print("Counts of user types: {}".format(user_type_count))
@@ -163,7 +163,7 @@ def user_stats(city, df):
         print("Most common birth year: {}".format(most_common_birth_year))
     else:
         print("No data for birth year is available.")
-        
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
