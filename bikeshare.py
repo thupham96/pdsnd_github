@@ -79,6 +79,7 @@ def time_stats(df):
     start_time = time.time()
 
     df['Start Time'] = pd.to_datetime(df['Start Time'])
+
     # TO DO: display the most common month
     df['month'] = df['Start Time'].dt.month
     most_common_month = df['month'].mode()[0]
@@ -107,9 +108,11 @@ def station_stats(df):
     # TO DO: display most commonly used start station
     popular_start_station = df['Start Station'].mode()[0]
     print("Most commonly used start station: {}".format(popular_start_station))
+
     # TO DO: display most commonly used end station
     popular_end_station = df['End Station'].mode()[0]
     print("Most commonly used end station: {}".format(popular_end_station))
+
     # TO DO: display most frequent combination of start station and end station trip
     popular_combination = df.groupby(['Start Station','End Station']).size().sort_values().index[0]
     print('Most frequent combination of start station and end station trip: {}'.format(popular_combination))
